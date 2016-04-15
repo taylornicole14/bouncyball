@@ -51,6 +51,46 @@
         context.closePath();
         context.fill();
       }
+       // Radius of the ball2
+      var BALL2_RADIUS = 20;
+
+      // Color of the ball2
+      var BALL2_COLOR = "#0f00ff";
+
+      // The x and y position of the ball2. Start in the center
+      var ball2X = CANVAS_WIDTH / 4;
+      var ball2Y = CANVAS_HEIGHT / 4;
+
+      // The current speed of the ball2
+      var dsx = 2;
+      var dsy = 10;
+
+      /**
+       * This function takes a 2d canvas context and draws a ball on it at ball2X and ball2Y
+       * of radius BALL2_RADIUS and color BALL2_COLOR.
+       */
+      function drawBall2(context) {
+        // Move the ball2
+        ball2X = ball2X + dsx;
+        ball2Y = ball2Y + dsy;
+
+        // If we've hit the left or right, turn around
+        if (ball2X > CANVAS_WIDTH || ball2X < 0) {
+          dsx = -dsx;
+        }
+
+        // If we've hit the top or bottom, turn around
+        if (ball2Y > CANVAS_HEIGHT || ball2Y < 0) {
+          dsy = -dsy;
+        }
+
+        // Actually draw the ball
+        context.beginPath();
+        context.fillStyle = BALL_COLOR;
+        context.arc(ballX, ballY, BALL_RADIUS, 0, 2 * Math.PI, true);
+        context.closePath();
+        context.fill();
+      }
 
       /**
        * This function is meant to be the refreshing drawing function. It gets the
